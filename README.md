@@ -1,5 +1,17 @@
 # AngularTraining
 
+## Requirements
+
+NodeJS > 6.9.0
+NPM > 3
+
+wget http://nodejs.org/dist/v6.9.5/node-v6.9.5-linux-x64.tar.gz
+tar -C /usr/local --strip-components 1 -xzf node-v6.9.5-linux-x64.tar.gz
+npm install -g typescript@2.2.0
+npm install -g @angular/cli
+npm install gulp-cli -g
+npm install
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.7.
 
 ## Development server
