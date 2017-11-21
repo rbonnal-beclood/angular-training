@@ -12,6 +12,7 @@ export class FirstComponent implements OnInit {
   limit: number    = 10;
   offset: number   = 0;
   currentParams: any;
+  isLoading: boolean = true;
 
   constructor(private route: ActivatedRoute,
               private commentsService: CommentsService) { }
@@ -23,7 +24,7 @@ export class FirstComponent implements OnInit {
       this.commentsService.getComments(params['params'], this.offset, this.limit).subscribe(data => {
         this.comments = data;
         this.currentParams = params['params'];
-        // this.isLoading = false;
+        this.isLoading = false;
       });
     });
   }

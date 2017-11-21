@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-second',
@@ -6,8 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./second.component.css']
 })
 export class SecondComponent implements OnInit {
+  secondForm: FormGroup; // <--- heroForm is of type FormGroup
 
-  constructor() { }
+  constructor(private fb: FormBuilder) { // <--- inject FormBuilder
+    this.createForm();
+  }
+
+  createForm() {
+    this.secondForm = this.fb.group({
+      search: ['', Validators.required ],
+    });
+  }
 
   ngOnInit() {
   }

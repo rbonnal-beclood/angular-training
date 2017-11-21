@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 import { FirstModule } from './first/first.module';
 import { SecondModule } from './second/second.module';
@@ -25,6 +27,7 @@ import { CommentsService } from './first/services/comments.service';
     SecondModule,
     ThirdModule,
     SharedModule,
+    MatProgressSpinnerModule,
   ],
   providers: [
     CommentsService,
