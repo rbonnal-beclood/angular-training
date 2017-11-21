@@ -8,7 +8,10 @@ import { CommentsService } from '../services/comments.service';
   styleUrls: ['./first.component.css']
 })
 export class FirstComponent implements OnInit {
-  comments: any[] = [];
+  comments: any[]  = [];
+  limit: number    = 10;
+  offset: number   = 0;
+  currentParams: any;
 
   constructor(private route: ActivatedRoute,
               private commentsService: CommentsService) { }
@@ -17,12 +20,29 @@ export class FirstComponent implements OnInit {
     this.route.queryParamMap.subscribe(params => {
       this.comments = [];
       // this.isLoading = true;
-      this.commentsService.getComments(params['params'], 0, 100).subscribe(data => {
+      this.commentsService.getComments(params['params'], this.offset, this.limit).subscribe(data => {
         this.comments = data;
-        // this.currentParams = params['params'];
+        this.currentParams = params['params'];
         // this.isLoading = false;
       });
     });
   }
+
+  deleteComment(comment) {
+    this.commentsService.deleteComment(comment).subscribe(
+        () => {
+          //Delete comment in the current comments list
+          this.comments.splice(this.comments.indexOf(comment), 1);
+        });
+  }
+
+
+// }  dialogRef.afterClosed().subscribe(result => {
+//     if (!!result) {
+//       for (let action of actions) {
+//         this.deleteAction(action);
+//       }
+
+//   });
 
 }

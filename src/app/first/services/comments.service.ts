@@ -8,17 +8,34 @@ export class CommentsService {
   constructor(private http: HttpClient) {}
 
     getComments(filters, offset: number = null, limit: number = null): Observable<any> {
-      return this.http.get('https://jsonplaceholder.typicode.com/comments', {
-        // params: this.buildQueryParams(filters)
-      });
+      let cloneFilters = Object.assign({}, filters);
+
+          if(!!offset) {
+              cloneFilters['_start'] = offset;
+          }
+          if(!!limit) {
+            cloneFilters['_limit'] = limit;
+          }
+
+          return this.http.get('https://jsonplaceholder.typicode.com/comments', {
+            params: this.buildQueryParams(cloneFilters)
+          });
     }
 
-    // buildQueryParams(filters) {
-    //   var params = new HttpParams();
+    buildQueryParams(filters) {
+      var params = new HttpParams();
 
-    //   for (let filter of Object.keys(filters)) {
-    //       params = params.append(filter, filters[filter]);
-    //   }
-    //   return params.append('organizationId', this.organizationService.organizationId);
-    // }
+      for (let filter of Object.keys(filters)) {
+          params = params.append(filter, filters[filter]);
+      }
+      return params;
+    }
+
+    deleteComment(comment: string) {
+      return this.http.delete('https://jsonplaceholder.typicode.com/comments/' + this.getCommentId(comment));
+    }
+
+    getCommentId(comment) {
+      return comment['id'];
+    }
 }
