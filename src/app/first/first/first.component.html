@@ -10,7 +10,6 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngIf="isLoading" class="no-result"><td colspan=4><mat-spinner></mat-spinner></td></tr>
       <tr *ngFor="let comment of comments; let odd=odd;" [ngClass]="{odd: odd}">
           <td>{{ comment.id }}</td>
           <td>{{ comment.name }}</td>

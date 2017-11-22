@@ -8,9 +8,14 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class SecondComponent implements OnInit {
   secondForm: FormGroup; // <--- heroForm is of type FormGroup
+  value:string = '';
 
   constructor(private fb: FormBuilder) { // <--- inject FormBuilder
     this.createForm();
+  }
+
+  changeValue(value: string) {
+    this.value = value;
   }
 
   createForm() {

@@ -10,16 +10,16 @@ export class CommentsService {
     getComments(filters, offset: number = null, limit: number = null): Observable<any> {
       let cloneFilters = Object.assign({}, filters);
 
-          if(!!offset) {
-              cloneFilters['_start'] = offset;
-          }
-          if(!!limit) {
-            cloneFilters['_limit'] = limit;
-          }
+      if(!!offset) {
+          cloneFilters['_start'] = offset;
+      }
+      if(!!limit) {
+        cloneFilters['_limit'] = limit;
+      }
 
-          return this.http.get('https://jsonplaceholder.typicode.com/comments', {
-            params: this.buildQueryParams(cloneFilters)
-          });
+      return this.http.get('https://jsonplaceholder.typicode.com/comments', {
+        params: this.buildQueryParams(cloneFilters)
+      });
     }
 
     buildQueryParams(filters) {

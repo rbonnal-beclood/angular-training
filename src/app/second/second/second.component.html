@@ -4,9 +4,11 @@
 <div>
   <form [formGroup]="secondForm" class="form-inline" novalidate>
     <div class="form-group">
-        <input class="form-control mr-sm-2" placeholder="Search" type="text" formControlName="search">
+        <input #inputRef (keyup)="changeValue(inputRef.value)" class="form-control mr-sm-2" placeholder="Search" type="text" formControlName="search">
     </div>
   </form>
+
+  <p>Variable value: {{ value }}</p>
 
   <p>Form value: {{ secondForm.value | json }}</p>
   <p>Form status: {{ secondForm.status | json }}</p>

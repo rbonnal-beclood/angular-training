@@ -2,16 +2,18 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FirstComponent } from './first/first.component';
 import { SharedModule } from './../shared/shared.module';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { CommentsService } from './services/comments.service';
 
 @NgModule({
   imports: [
     CommonModule,
     SharedModule,
-    MatProgressSpinnerModule,
   ],
-  exports:[
+  exports: [
     FirstComponent,
+  ],
+  providers: [
+    CommentsService,
   ],
   declarations: [FirstComponent]
 })
