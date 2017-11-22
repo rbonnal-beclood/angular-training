@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class CommentsService {
@@ -20,6 +21,13 @@ export class CommentsService {
       return this.http.get('https://jsonplaceholder.typicode.com/comments', {
         params: this.buildQueryParams(cloneFilters)
       });
+
+      // Exemple de map (attention a bien importer le map)
+      // return this.http.get('https://jsonplaceholder.typicode.com/comments', {
+      //   params: this.buildQueryParams(cloneFilters)
+      // }).map((reponse) => {
+      //   console.log('tets');
+      // });
     }
 
     buildQueryParams(filters) {
